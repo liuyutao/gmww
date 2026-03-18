@@ -86,7 +86,7 @@ const Home: React.FC<HomeProps> = ({ setSection }) => {
               onClick={() => setSection('snow')}
               className="relative h-96 group cursor-pointer overflow-hidden shadow-xl"
             >
-              <img src="https://picsum.photos/seed/nav1/600/800" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Navigate Snow" />
+              <img src="/assets/images3/image1.png" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Navigate Snow" />
               <div className="absolute inset-0 bg-gradient-to-t from-[#2d241e] to-transparent opacity-80"></div>
               <div className="absolute bottom-8 left-8 right-8 text-white">
                 <h3 className="text-2xl font-bold mb-2 serif">文物故事溯源</h3>
@@ -98,7 +98,7 @@ const Home: React.FC<HomeProps> = ({ setSection }) => {
               onClick={() => setSection('exploration')}
               className="relative h-96 group cursor-pointer overflow-hidden shadow-xl"
             >
-              <img src="https://picsum.photos/seed/nav2/600/800" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Navigate Exploration" />
+              <img src="/assets/images3/image2.png" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Navigate Exploration" />
               <div className="absolute inset-0 bg-gradient-to-t from-[#9c3d3d] to-transparent opacity-80"></div>
               <div className="absolute bottom-8 left-8 right-8 text-white">
                 <h3 className="text-2xl font-bold mb-2 serif">历史场景重现</h3>
@@ -110,7 +110,7 @@ const Home: React.FC<HomeProps> = ({ setSection }) => {
               onClick={() => setSection('heritage')}
               className="relative h-96 group cursor-pointer overflow-hidden shadow-xl"
             >
-              <img src="https://picsum.photos/seed/nav3/600/800" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Navigate Heritage" />
+              <img src="/assets/images3/image3.png" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Navigate Heritage" />
               <div className="absolute inset-0 bg-gradient-to-t from-[#5d4c3c] to-transparent opacity-80"></div>
               <div className="absolute bottom-8 left-8 right-8 text-white">
                 <h3 className="text-2xl font-bold mb-2 serif">数字活化传承</h3>
