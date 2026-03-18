@@ -9,6 +9,7 @@ import Heritage from './sections/Heritage';
 import Exhibition from './sections/Exhibition';
 import Revolutionary from './sections/Revolutionary';
 import Relics from './sections/Relics';
+import Snow from './sections/Snow';
 
 const App: React.FC = () => {
   const [currentSection, setCurrentSection] = useState<Section>('home');
@@ -30,6 +31,8 @@ const App: React.FC = () => {
         return <Revolutionary />;
       case 'relics':
         return <Relics />;
+      case 'snow':
+        return <Snow setSection={setCurrentSection} />;
       default:
         return <Home setSection={setCurrentSection} />;
     }

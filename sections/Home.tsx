@@ -83,10 +83,10 @@ const Home: React.FC<HomeProps> = ({ setSection }) => {
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div
-              onClick={() => setSection('appreciation')}
+              onClick={() => setSection('snow')}
               className="relative h-96 group cursor-pointer overflow-hidden shadow-xl"
             >
-              <img src="https://picsum.photos/seed/nav1/600/800" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Navigate Appreciation" />
+              <img src="https://picsum.photos/seed/nav1/600/800" className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Navigate Snow" />
               <div className="absolute inset-0 bg-gradient-to-t from-[#2d241e] to-transparent opacity-80"></div>
               <div className="absolute bottom-8 left-8 right-8 text-white">
                 <h3 className="text-2xl font-bold mb-2 serif">文物故事溯源</h3>

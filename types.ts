@@ -1,5 +1,5 @@
 
-export type Section = 'home' | 'appreciation' | 'exploration' | 'heritage' | 'exhibition' | 'revolutionary' | 'relics';
+export type Section = 'home' | 'appreciation' | 'exploration' | 'heritage' | 'exhibition' | 'revolutionary' | 'relics' | 'snow';
 
 export interface WoodcutWork {
   id: string;
