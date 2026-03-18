@@ -11,9 +11,9 @@ const Exploration: React.FC = () => {
     <div className="py-20 px-6 bg-[#ebe0d1] min-h-screen animate-in fade-in duration-500">
       <div className="max-w-7xl mx-auto">
         <header className="mb-12">
-          <h2 className="text-4xl font-bold text-[#5d4c3c] serif mb-4">延安版画：空间虚拟探索</h2>
+          <h2 className="text-4xl font-bold text-[#5d4c3c] serif mb-4">空间虚拟探索</h2>
           <p className="text-gray-600 max-w-2xl">
-            点击地图上的红点，探索版画艺术家们的足迹。这里是黄土地孕育革命艺术的圣地。
+            革命旧址是指见证中国革命历史、具有重要纪念意义和史料价值的建筑物、构筑物、遗址、遗迹，被明确纳入革命文物保护范畴，分“全国重点文物保护单位/省级/市县级”不同定级。
           </p>
         </header>
 
