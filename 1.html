@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>革命文物数字传播平台</title>
+    <!-- 引入 Tailwind CSS 样式库 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 引入 字体 -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&family=Noto+Sans+SC:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --color-red: #9c3d3d;
+            --color-earth: #5d4c3c;
+            --color-gold: #b08d57;
+            --color-paper: #f5e9db;
+        }
+        body {
+            background-color: var(--color-paper);
+            color: #2d241e;
+            font-family: 'Noto Sans SC', sans-serif;
+            overflow-x: hidden;
+        }
+        h1, h2, h3, .serif {
+            font-family: 'Noto Serif SC', serif;
+        }
+        .woodcut-texture {
+            background-image: url("https://www.transparenttextures.com/patterns/pinstripe.png");
+            opacity: 0.1;
+        }
+        /* 自定义滚动条 */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f5e9db; }
+        ::-webkit-scrollbar-thumb { background: #9c3d3d; border-radius: 4px; }
+        
+        /* 动画辅助类 */
+        .preserve-3d { transform-style: preserve-3d; }
+    </style>
+
+    <!-- 导入映射：让浏览器知道从哪里下载 React 等库 -->
+    <script type="importmap">
+    {
+      "imports": {
+        "react": "https://esm.sh/react@18.2.0",
+        "react-dom": "https://esm.sh/react-dom@18.2.0",
+        "react-dom/client": "https://esm.sh/react-dom@18.2.0/client",
+        "lucide-react": "https://esm.sh/lucide-react@0.263.1",
+        "framer-motion": "https://esm.sh/framer-motion@10.16.4",
+        "@google/genai": "https://esm.sh/@google/genai@0.1.0"
+      }
+    }
+    </script>
+    <!-- Babel 运行时 JSX 转译 -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel" data-type="module">
+        import React, { useState, useEffect, useRef, useMemo } from 'react';
+        import ReactDOM from 'react-dom/client';
+        import { 
+            Menu, X, Share2, Search, Settings, ArrowRight, ShieldCheck, 
+            Database, Globe, History, Sparkles, ChevronRight, ChevronLeft, 
+            Calendar, Info, MapPin, Maximize2, User, Archive as ArchiveIcon,
+            Upload, Plus, Save, Trash2, Loader2, CheckCircle2, AlertCircle
+        } from 'lucide-react';
+        import { motion, AnimatePresence } from 'framer-motion';
+
+        // --- 常量数据 ---
+        const ARTIFACTS = [
+            {
+                id: 'a1',
+                title: '朱德的扁担',
+                time: '1928年',
+                location: '井冈山',
+                people: '朱德',
+                collectionSite: '井冈山革命博物馆',
+                backgroundStory: '在井冈山斗争时期，朱德同志亲自带领战士们下山挑粮。为了不让朱德太劳累，战士们把他的扁担藏了起来。朱德又削了一根扁担，并刻上“朱德记”三个大字，继续挑粮。',
+                imageUrl: 'https://images.unsplash.com/photo-1582555172866-f73bb12a2ab3?auto=format&fit=crop&q=80&w=800',
+                category: '生活用品',
+                tags: ['井冈山', '挑粮', '官兵一致']
+            },
+            {
+                id: 'a2',
+                title: '《共产党宣言》首个中译本',
+                time: '1920年',
+                location: '上海/北京',
+                people: '陈望道',
+                collectionSite: '中国国家博物馆',
+                backgroundStory: '陈望道在浙江义乌家中翻译《共产党宣言》时，由于过度专注，误将墨汁当成红糖蘸着粽子吃，还说“甜，真甜”。这就是“真理的味道是甜的”故事来源。',
+                imageUrl: 'https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&fit=crop&q=80&w=800',
+                category: '文献手稿',
+                tags: ['真理的味道', '陈望道', '马克思主义']
+            },
+            {
+                id: 'a3',
+                title: '红军长征时使用的皮带',
+                time: '1936年',
+                location: '草地',
+                people: '红军战士',
+                collectionSite: '中国人民革命军事博物馆',
+                backgroundStory: '长征过草地时，粮食断绝。红六军团战士周广才和战友们靠吃皮带维持生命。最后剩下半截皮带，周广才舍不得吃，想带到延安见毛主席，以此纪念牺牲的战友。',
+                imageUrl: 'https://images.unsplash.com/photo-1526508889199-03e8ee3fe84a?auto=format&fit=crop&q=80&w=800',
+                category: '生活用品',
+                tags: ['长征', '过草地', '艰苦奋斗']
+            },
+            {
+                id: 'a4',
+                title: '开国大典使用的麦克风',
+                time: '1949年10月1日',
+                location: '天安门广场',
+                people: '毛泽东',
+                collectionSite: '中国国家博物馆',
+                backgroundStory: '1949年10月1日，毛泽东主席在天安门城楼上，通过这组麦克风向全世界庄严宣告：“中华人民共和国中央人民政府今天成立了！”',
+                imageUrl: 'https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&q=80&w=800',
+                category: '武器装备',
+                tags: ['开国大典', '天安门', '新中国成立']
+            }
+        ];
+
+        const TIMELINE = [
+            { year: '1921', title: '中国共产党成立', description: '中共一大在上海召开，随后转移至嘉兴南湖红船。', artifactIds: ['a2'] },
+            { year: '1927', title: '南昌起义', description: '打响了武装反抗国民党反动派的第一枪。' },
+            { year: '1934-1936', title: '红军长征', description: '战略大转移，保存了革命火种。', artifactIds: ['a3'] },
+            { year: '1949', title: '新中国成立', description: '中华人民共和国成立，中国人民从此站起来了。', artifactIds: ['a4'] }
+        ];
+
+        const SITES = [
+            { id: 's1', name: '上海中共一大会址', coords: { x: 85, y: 65 }, description: '中国共产党的诞生地。', history: '1921年7月，来自各地的代表在此秘密集会。' },
+            { id: 's2', name: '井冈山革命根据地', coords: { x: 75, y: 75 }, description: '中国革命的摇篮。', history: '毛泽东、朱德在此会师，开创了农村包围城市的道路。', artifactIds: ['a1'] },
+            { id: 's3', name: '延安', coords: { x: 60, y: 45 }, description: '中国革命的圣地。', history: '中共中央在此领导了抗日战争和解放战争。' },
+            { id: 's4', name: '北京天安门', coords: { x: 70, y: 35 }, description: '新中国的象征。', history: '1949年在此举行开国大典。', artifactIds: ['a4'] }
+        ];
+
+        // --- 子组件 ---
+
+        const Layout = ({ currentSection, setSection, children }) => {
+            const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+            const navItems = [
+                { id: 'home', label: '综合门户' },
+                { id: 'chronicle', label: '红色编年' },
+                { id: 'atlas', label: '革命图谱' },
+                { id: 'gallery', label: '沉浸展厅' },
+                { id: 'archive', label: '文物档案' },
+                { id: 'admin', label: '数字工作台', icon: <Settings size={14} className="mr-1" /> },
+            ];
+
+            return (
+                <div className="min-h-screen flex flex-col relative">
+                    <div className="fixed inset-0 woodcut-texture pointer-events-none z-0"></div>
+                    <nav className="sticky top-0 z-50 bg-[#9c3d3d] text-white shadow-lg">
+                        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                            <div className="flex justify-between h-20 items-center">
+                                <div className="flex items-center space-x-3 cursor-pointer" onClick={() => setSection('home')}>
+                                    <div className="w-12 h-12 bg-[#f5e9db] flex items-center justify-center rounded-sm overflow-hidden border-2 border-[#b08d57]/30 shadow-inner">
+                                        <svg viewBox="0 0 24 24" className="w-8 h-8 text-[#9c3d3d] fill-current drop-shadow-sm">
+                                            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div className="hidden md:flex space-x-6">
+                                    {navItems.map((item) => (
+                                        <button key={item.id} onClick={() => setSection(item.id)} className={`px-3 py-2 text-sm font-medium tracking-widest transition-all duration-300 relative group flex items-center ${currentSection === item.id ? 'text-[#f5e9db]' : 'text-red-100 hover:text-white'}`}>
+                                            {item.icon}{item.label}
+                                            <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-[#b08d57] transition-transform duration-300 ${currentSection === item.id ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></span>
+                                        </button>
+                                    ))}
+                                </div>
+                                <div className="flex items-center space-x-4">
+                                    <button className="p-2 hover:bg-red-800 rounded-full transition-colors"><Search size={20} /></button>
+                                    <button className="md:hidden p-2" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>{mobileMenuOpen ? <X /> : <Menu />}</button>
+                                </div>
+                            </div>
+                        </div>
+                    </nav>
+                    <main className="flex-grow z-10 relative">{children}</main>
+                    <footer className="bg-[#2d241e] text-[#f5e9db] py-12 px-6 z-10 text-center">
+                        <h2 className="text-2xl font-bold mb-4 serif">革命文物数字传播平台</h2>
+                        <p className="text-sm opacity-50">© 2026 革命文物数字传播平台. 版权所有.</p>
+                    </footer>
+                </div>
+            );
+        };
+
+        const Home = ({ setSection }) => {
+            const features = [
+                { id: 'chronicle', title: '红色编年', desc: '穿越时空，在动态时间轴中见证革命岁月的波澜壮阔。', icon: <History size={24} />, color: 'bg-red-50' },
+                { id: 'atlas', title: '革命图谱', desc: '点击地理坐标，探索全国革命遗址与文物的空间关联。', icon: <Globe size={24} />, color: 'bg-blue-50' },
+                { id: 'gallery', title: '沉浸展厅', desc: '沉浸式卡片流展示，近距离感受革命文物的艺术魅力。', icon: <Sparkles size={24} />, color: 'bg-amber-50' },
+                { id: 'archive', title: '文物档案', desc: '数字化虚拟数据库，构建革命历史的立体知识图谱。', icon: <Database size={24} />, color: 'bg-emerald-50' }
+            ];
+
+            return (
+                <div className="relative">
+                    <section className="relative min-h-[80vh] flex items-center justify-center px-6 py-20 bg-stone-100">
+                        <div className="text-center max-w-4xl">
+                            <h1 className="text-6xl md:text-7xl font-black serif text-[#2d241e] mb-8 leading-tight">
+                                革命文物<br /><span className="text-[#9c3d3d]">数字传播平台</span>
+                            </h1>
+                            <p className="text-xl text-stone-600 mb-12 serif">汇集全国革命文物资源，让文物“活”起来。</p>
+                            <div className="flex justify-center gap-6">
+                                <button onClick={() => setSection('gallery')} className="px-8 py-4 bg-[#9c3d3d] text-white rounded-xl font-bold hover:bg-[#8b3535] transition-all shadow-lg">立即开启沉浸体验</button>
+                                <button onClick={() => setSection('archive')} className="px-8 py-4 bg-white text-[#9c3d3d] border-2 border-[#9c3d3d]/20 rounded-xl font-bold hover:bg-gray-50 transition-all">探索文物数据库</button>
+                            </div>
+                        </div>
+                    </section>
+                    <section className="py-24 px-6 bg-white">
+                        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                            {features.map((f) => (
+                                <div key={f.id} onClick={() => setSection(f.id)} className={`p-8 rounded-3xl ${f.color} cursor-pointer hover:shadow-xl transition-all border border-transparent hover:border-[#9c3d3d]/10`}>
+                                    <div className="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-[#9c3d3d] mb-6 shadow-sm">{f.icon}</div>
+                                    <h3 className="text-xl font-bold serif mb-4">{f.title}</h3>
+                                    <p className="text-sm text-gray-600 leading-relaxed">{f.desc}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </section>
+                </div>
+            );
+        };
+
+        const Chronicle = () => {
+            const [activeIndex, setActiveIndex] = useState(0);
+            const currentEvent = TIMELINE[activeIndex];
+            return (
+                <div className="min-h-[80vh] bg-[#f5e9db] p-12">
+                    <div className="max-w-4xl mx-auto bg-white p-10 rounded-3xl shadow-2xl">
+                        <div className="text-[#9c3d3d] font-bold text-3xl mb-4 serif">{currentEvent.year}</div>
+                        <h2 className="text-4xl font-bold mb-6 serif">{currentEvent.title}</h2>
+                        <p className="text-lg text-gray-600 leading-relaxed mb-8">{currentEvent.description}</p>
+                        <div className="flex justify-between">
+                            <button disabled={activeIndex === 0} onClick={() => setActiveIndex(activeIndex - 1)} className="px-6 py-2 bg-stone-100 rounded-full disabled:opacity-30">上一个</button>
+                            <button disabled={activeIndex === TIMELINE.length - 1} onClick={() => setActiveIndex(activeIndex + 1)} className="px-6 py-2 bg-[#9c3d3d] text-white rounded-full disabled:opacity-30">下一个</button>
+                        </div>
+                    </div>
+                </div>
+            );
+        };
+
+        const Atlas = () => {
+            const [selectedSite, setSelectedSite] = useState(null);
+            return (
+                <div className="min-h-[80vh] bg-[#f5e9db] p-12 flex flex-col lg:flex-row gap-8">
+                    <div className="flex-grow bg-white/50 rounded-3xl border-4 border-white relative min-h-[400px]">
+                        {SITES.map(site => (
+                            <button key={site.id} onClick={() => setSelectedSite(site)} className="absolute transform -translate-x-1/2 -translate-y-1/2" style={{ left: `${site.coords.x}%`, top: `${site.coords.y}%` }}>
+                                <MapPin size={32} className={selectedSite?.id === site.id ? 'text-[#9c3d3d]' : 'text-stone-400'} />
+                            </button>
+                        ))}
+                    </div>
+                    <div className="w-full lg:w-1/3 bg-white p-8 rounded-3xl shadow-xl">
+                        {selectedSite ? (
+                            <>
+                                <h3 className="text-3xl font-bold serif mb-4">{selectedSite.name}</h3>
+                                <p className="text-stone-600 mb-6">{selectedSite.history}</p>
+                            </>
+                        ) : <p className="text-stone-400 italic">请点击地图上的坐标点查看详情</p>}
+                    </div>
+                </div>
+            );
+        };
+
+        const Gallery = () => {
+            const [idx, setIdx] = useState(0);
+            const item = ARTIFACTS[idx];
+            return (
+                <div className="h-[80vh] bg-stone-900 flex items-center justify-center p-12">
+                    <div className="max-w-5xl w-full flex flex-col md:flex-row gap-12 items-center">
+                        <img src={item.imageUrl} className="w-full md:w-1/2 rounded-3xl shadow-2xl" />
+                        <div className="text-white">
+                            <h2 className="text-5xl font-bold serif mb-6">{item.title}</h2>
+                            <p className="text-stone-400 italic mb-8">“{item.backgroundStory}”</p>
+                            <div className="flex gap-4">
+                                <button onClick={() => setIdx((idx - 1 + ARTIFACTS.length) % ARTIFACTS.length)} className="p-4 bg-white/10 rounded-full"><ChevronLeft /></button>
+                                <button onClick={() => setIdx((idx + 1) % ARTIFACTS.length)} className="p-4 bg-white/10 rounded-full"><ChevronRight /></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            );
+        };
+
+        const Archive = () => {
+            return (
+                <div className="p-12 max-w-7xl mx-auto">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        {ARTIFACTS.map(a => (
+                            <div key={a.id} className="bg-white rounded-2xl overflow-hidden shadow-lg">
+                                <img src={a.imageUrl} className="w-full h-48 object-cover" />
+                                <div className="p-6">
+                                    <h3 className="text-xl font-bold mb-2 serif">{a.title}</h3>
+                                    <p className="text-sm text-stone-500 line-clamp-2">{a.backgroundStory}</p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            );
+        };
+
+        const Admin = () => {
+            return (
+                <div className="p-20 text-center">
+                    <h2 className="text-3xl font-bold serif mb-4">数字工作台</h2>
+                    <p className="text-stone-500">此模块需要管理员权限，用于上传和管理数字化文物。</p>
+                </div>
+            );
+        };
+
+        // --- 主应用 ---
+
+        const App = () => {
+            const [section, setSection] = useState('home');
+
+            const renderSection = () => {
+                switch (section) {
+                    case 'home': return <Home setSection={setSection} />;
+                    case 'chronicle': return <Chronicle />;
+                    case 'atlas': return <Atlas />;
+                    case 'gallery': return <Gallery />;
+                    case 'archive': return <Archive />;
+                    case 'admin': return <Admin />;
+                    default: return <Home setSection={setSection} />;
+                }
+            };
+
+            return (
+                <Layout currentSection={section} setSection={setSection}>
+                    {renderSection()}
+                </Layout>
+            );
+        };
+
+        // 挂载应用
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
