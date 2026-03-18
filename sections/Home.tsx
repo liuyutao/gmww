@@ -90,7 +90,7 @@ const Home: React.FC<HomeProps> = ({ setSection }) => {
               <div className="absolute inset-0 bg-gradient-to-t from-[#2d241e] to-transparent opacity-80"></div>
               <div className="absolute bottom-8 left-8 right-8 text-white">
                 <h3 className="text-2xl font-bold mb-2 serif">文物故事溯源</h3>
-                <p className="text-sm opacity-80 mb-4">走进古元、冼星海等创作者与文物背后的峥嵘岁月。</p>
+                <p className="text-sm opacity-80 mb-4">随斯诺深入陕北苏区，探寻六件随身文物背后的红色中国真相。</p>
                 <ChevronRight className="transform group-hover:translate-x-2 transition-transform" />
               </div>
             </div>
