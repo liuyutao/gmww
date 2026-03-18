@@ -14,7 +14,7 @@ const Layout: React.FC<LayoutProps> = ({ currentSection, setSection, children })
 
   const navItems = [
     { id: 'home', label: '首页' },
-    { id: 'exhibition', label: '沉浸展馆' },
+    { id: 'exhibition', label: '沉浸观展' },
     { id: 'exploration', label: '历史探秘' },
     { id: 'heritage', label: '文化传承' },
     { id: 'revolutionary', label: '文艺革命文物' },
