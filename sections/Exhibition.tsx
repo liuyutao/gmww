@@ -168,7 +168,7 @@ const Exhibition: React.FC<ExhibitionProps> = ({ setSection }) => {
         </button>
 
         <div className="text-center">
-          <p className="text-[#b08d57] text-xs tracking-[0.4em] uppercase font-light mb-1">延安红色版画</p>
+          <p className="text-[#b08d57] text-xs tracking-[0.4em] uppercase font-light mb-1">革命文件数字展</p>
           <h1 className="text-[#f5e9db] text-lg sm:text-xl font-black serif tracking-widest">沉浸观展</h1>
           <div className="w-16 h-px bg-[#b08d57] mx-auto mt-1 opacity-60" />
         </div>
