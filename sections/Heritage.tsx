@@ -1,8 +1,13 @@
 
 import React from 'react';
 import { ShieldCheck, Cpu, Library, Users, ArrowUpRight } from 'lucide-react';
+import { Section } from '../types';
 
-const Heritage: React.FC = () => {
+interface HeritageProps {
+  setSection: (s: Section) => void;
+}
+
+const Heritage: React.FC<HeritageProps> = ({ setSection }) => {
   return (
     <div className="animate-in fade-in duration-700 pb-20">
       {/* Header Banner */}
@@ -56,7 +61,10 @@ const Heritage: React.FC = () => {
                 <p className="text-sm text-gray-600 leading-relaxed">
                     融合历史学、文物保护学、材料科学、数字技术、传播学等多领域，构建革命文物全维度数据库，支持从文物溯源、工艺研究、历史考证到价值阐释的全方位研究与检索。
                 </p>
-                <button className="mt-6 text-[#9c3d3d] font-bold text-sm flex items-center hover:translate-x-2 transition-transform">
+                <button
+                    onClick={() => setSection('relics')}
+                    className="mt-6 text-[#9c3d3d] font-bold text-sm flex items-center hover:translate-x-2 transition-transform"
+                >
                     进入数据库 <ArrowUpRight size={16} className="ml-1" />
                 </button>
             </div>

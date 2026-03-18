@@ -55,7 +55,10 @@ const Layout: React.FC<LayoutProps> = ({ currentSection, setSection, children })
             </div>
 
             <div className="flex items-center space-x-4">
-              <button className="p-2 hover:bg-red-800 rounded-full transition-colors">
+              <button
+                onClick={() => setSection('relics')}
+                className="p-2 hover:bg-red-800 rounded-full transition-colors"
+              >
                 <Search size={20} />
               </button>
               <button className="md:hidden p-2" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>

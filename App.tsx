@@ -24,7 +24,7 @@ const App: React.FC = () => {
       case 'exploration':
         return <Exploration />;
       case 'heritage':
-        return <Heritage />;
+        return <Heritage setSection={setCurrentSection} />;
       case 'exhibition':
         return <Exhibition setSection={setCurrentSection} />;
       case 'revolutionary':
