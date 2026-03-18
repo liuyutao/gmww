@@ -320,12 +320,14 @@ const Exhibition: React.FC<ExhibitionProps> = ({ setSection }) => {
 
       {/* 右侧抽屉 */}
       <div
-        className="fixed top-0 right-0 h-full z-40 flex flex-col bg-[#0f0705] border-l border-[#b08d57]/20 overflow-y-auto"
+        className="fixed top-0 right-0 h-full z-40 flex flex-col text-[#f5e9db] overflow-y-auto"
         style={{
           width: 'min(420px, 100vw)',
           transform: drawerOpen ? 'translateX(0)' : 'translateX(100%)',
           transition: 'transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-          boxShadow: drawerOpen ? '-8px 0 40px rgba(0,0,0,0.6)' : 'none',
+          boxShadow: drawerOpen ? '-8px 0 60px rgba(0,0,0,0.7)' : 'none',
+          background: 'linear-gradient(180deg, #1b0f07 0%, #090503 100%)',
+          borderLeft: '1px solid rgba(176,141,87,0.28)',
         }}
       >
         {drawerWork && (
@@ -365,20 +367,20 @@ const Exhibition: React.FC<ExhibitionProps> = ({ setSection }) => {
 
               {/* 历史背景 */}
               <div className="mb-6">
-                <h3 className="text-[#b08d57] text-xs font-bold tracking-[0.3em] uppercase mb-3 flex items-center">
-                  <span className="w-4 h-px bg-[#b08d57] mr-2" />
+                <h3 className="text-[#f7d38d] text-xs font-bold tracking-[0.3em] uppercase mb-3 flex items-center">
+                  <span className="w-4 h-px bg-[#f7d38d] mr-2" />
                   历史背景
                 </h3>
-                <p className="text-[#c9b49a] text-sm leading-relaxed">{drawerWork.description}</p>
+                <p className="text-[#dfc8a2] text-sm leading-relaxed">{drawerWork.description}</p>
               </div>
 
               {/* 创作故事 */}
               <div className="mb-6">
-                <h3 className="text-[#b08d57] text-xs font-bold tracking-[0.3em] uppercase mb-3 flex items-center">
-                  <span className="w-4 h-px bg-[#b08d57] mr-2" />
-                  创作故事
+                <h3 className="text-[#f7d38d] text-xs font-bold tracking-[0.3em] uppercase mb-3 flex items-center">
+                  <span className="w-4 h-px bg-[#f7d38d] mr-2" />
+                  文物故事
                 </h3>
-                <p className="text-[#c9b49a] text-sm leading-relaxed">{drawerWork.story}</p>
+                <p className="text-[#dfc8a2] text-sm leading-relaxed">{drawerWork.story}</p>
               </div>
 
               {/* AI 艺术解析 */}
