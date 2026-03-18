@@ -56,6 +56,10 @@ const Snow: React.FC<SnowProps> = ({ setSection }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [playing, setPlaying] = useState(false);
 
+  React.useEffect(() => {
+    window.scrollTo({ top: 0 });
+  }, []);
+
   const togglePlay = () => {
     if (!videoRef.current) return;
     if (playing) {
