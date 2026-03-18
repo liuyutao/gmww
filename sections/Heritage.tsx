@@ -26,10 +26,10 @@ const Heritage: React.FC = () => {
                 <ShieldCheck size={48} className="text-[#9c3d3d] mb-8 relative" />
                 <h3 className="text-3xl font-bold mb-6 text-[#5d4c3c] serif">传统物理保护</h3>
                 <p className="text-gray-600 leading-relaxed mb-8">
-                    介绍延安红色版画在保存过程中的传统方法，结合历史资料与照片，展示通过物理脱酸、恒温恒湿存储等物理手段如何延缓作品的老化。
+                    介绍革命文物在保存过程中的传统方法，结合历史资料与实物档案，展示通过恒温恒湿、防虫防霉、脱酸加固、专业修复等物理手段，如何延缓文物材质老化、延长实体寿命。
                 </p>
                 <div className="border-t border-gray-100 pt-6">
-                    <span className="text-xs font-bold text-[#b08d57] tracking-widest uppercase">现状：由于纸张老化，物理寿命正面临巨大挑战。</span>
+                    <span className="text-xs font-bold text-[#b08d57] tracking-widest uppercase">现状：受材质、环境、时间影响，大量纸质、木质、织物类革命文物老化破损，实体保存压力持续增大。</span>
                 </div>
             </div>
 
@@ -39,10 +39,10 @@ const Heritage: React.FC = () => {
                 <Cpu size={48} className="text-[#f5e9db] mb-8 relative" />
                 <h3 className="text-3xl font-bold mb-6 serif">现代数字化创新</h3>
                 <p className="text-red-50 opacity-90 leading-relaxed mb-8">
-                    高清三维扫描、高保真色彩复原、非同质化资产管理（NFT）等技术流程，赋予版画“数字永生”。通过AI技术修复受损细节，展现红色艺术的原始震撼。
+                    运用高清三维扫描、高精度色彩还原、AI智能修复、数字孪生、区块链存证等技术，为革命文物建立永久数字档案，实现"数字永生"。通过数字化手段还原历史细节、修复破损痕迹，让革命文物的历史价值与精神力量完整留存。
                 </p>
                 <div className="border-t border-white/20 pt-6">
-                    <span className="text-xs font-bold text-[#b08d57] tracking-widest uppercase">未来：全息展览、数字孪生，实现云端永续流传。</span>
+                    <span className="text-xs font-bold text-[#b08d57] tracking-widest uppercase">未来：沉浸式数字展陈、云端永久馆藏、跨时空传播，实现革命文物永续传承与全民共享。</span>
                 </div>
             </div>
         </div>
@@ -54,7 +54,7 @@ const Heritage: React.FC = () => {
                     <Library className="mr-3" /> 多学科交叉研究体系
                 </h4>
                 <p className="text-sm text-gray-600 leading-relaxed">
-                    不仅是艺术，更涉及历史学、文化遗产学、材料科学。我们建立了一套红色版画的多维度数据库，支持学者从技法演变到社会功能的全面检索。
+                    融合历史学、文物保护学、材料科学、数字技术、传播学等多领域，构建革命文物全维度数据库，支持从文物溯源、工艺研究、历史考证到价值阐释的全方位研究与检索。
                 </p>
                 <button className="mt-6 text-[#9c3d3d] font-bold text-sm flex items-center hover:translate-x-2 transition-transform">
                     进入数据库 <ArrowUpRight size={16} className="ml-1" />
@@ -66,7 +66,7 @@ const Heritage: React.FC = () => {
                     <Users className="mr-3" /> 校园互动与公众教育
                 </h4>
                 <p className="text-sm text-gray-600 leading-relaxed">
-                    开发了“云上木刻实验室”小程序，让青少年在数字屏幕上体验“刻、印、拓”的全过程。通过寓教于乐的方式，让红色文化在年轻一代心中扎根。
+                    打造"云端革命文物体验馆"小程序与互动平台，让公众尤其是青少年在线体验文物修复、虚拟鉴赏、历史场景还原等内容，以沉浸式、互动式教育推动革命文化普及，厚植家国情怀。
                 </p>
                 <button className="mt-6 text-[#5d4c3c] font-bold text-sm flex items-center hover:translate-x-2 transition-transform">
                     下载教学课件 <ArrowUpRight size={16} className="ml-1" />
@@ -81,10 +81,10 @@ const Heritage: React.FC = () => {
                 <div className="absolute top-1/2 left-0 w-full h-1 bg-[#ebe0d1] -translate-y-1/2 hidden md:block"></div>
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
                     {[
-                        { year: '1980s', title: '初步抢救', desc: '延安鲁艺旧址开始大规模征集、整理早期版画作品。' },
-                        { year: '2005', title: '数字化建档', desc: '首个红色文化遗产数据库启动，实现初步影像化存储。' },
-                        { year: '2018', title: '高精修复', desc: '引入AI图像增强技术，对受潮发霉的作品进行数字复原。' },
-                        { year: '2024', title: '全息传播', desc: '多维交互平台上线，实现红色版画的沉浸式云端大展。' }
+                        { year: '1980s', title: '初步抢救', desc: '全国多地革命旧址、纪念馆启动革命文物普查征集，对纸质、木质、金属类革命文物开展基础修复与物理保护。' },
+                        { year: '2005', title: '数字化建档', desc: '全国革命文物数据库建设启动，完成首批革命文物影像采集、分类建档与基础数字化存储。' },
+                        { year: '2018', title: '高精修复', desc: '引入AI图像修复、三维扫描、材质分析等技术，对破损、褪色、霉变革命文物进行高精度数字复原与实体修复。' },
+                        { year: '2024', title: '全息传播', desc: '革命文物数字传播平台全面上线，实现全息展陈、云端共享、沉浸式体验与全民传播。' }
                     ].map((item, i) => (
                         <div key={i} className="bg-white p-6 shadow-sm border border-gray-100 rounded z-10 hover:shadow-lg transition-shadow">
                             <span className="text-xl font-black text-[#9c3d3d] serif">{item.year}</span>

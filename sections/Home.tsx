@@ -26,10 +26,11 @@ const Home: React.FC<HomeProps> = ({ setSection }) => {
         <div className="relative z-10 text-center px-4 max-w-4xl">
           <h2 className="text-white text-sm sm:text-lg tracking-[0.2em] sm:tracking-[0.5em] mb-4 opacity-90 font-light">抗战硝烟中的艺术丰碑</h2>
           <h1 className="text-4xl sm:text-5xl md:text-8xl text-[#f5e9db] font-black mb-8 serif drop-shadow-2xl leading-tight">
-            延安红色版画<br /><span className="text-[#b08d57]">数字化大展</span>
+            革命文物
+<br /><span className="text-[#b08d57]">数字传播平台</span>
           </h1>
           <p className="text-red-50 px-8 text-lg md:text-xl font-light mb-12 leading-relaxed opacity-80">
-            刀锋镌刻岁月，木痕记载初心。穿越时空隧道，感悟革命版画中的热血与忠诚。
+            汇集全国革命文物资源，让文物“活”起来。
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-6">
             <button
