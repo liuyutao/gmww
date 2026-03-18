@@ -71,25 +71,25 @@ const Snow: React.FC<SnowProps> = ({ setSection }) => {
   };
 
   return (
-    <div className="min-h-screen bg-[#0e0807] text-[#f5e9db] animate-in fade-in duration-500">
+    <div className="min-h-screen bg-[#f5e9db] text-[#2d241e] animate-in fade-in duration-500">
       {/* 顶部导航 */}
-      <div className="sticky top-0 z-20 bg-[#0e0807]/90 backdrop-blur-sm border-b border-[#b08d57]/20 px-6 py-4 flex items-center justify-between">
+      <div className="sticky top-0 z-20 bg-[#f5e9db]/95 backdrop-blur-sm border-b border-[#b08d57]/30 px-6 py-4 flex items-center justify-between">
         <button
           onClick={() => setSection('home')}
-          className="flex items-center space-x-1 text-[#b08d57] hover:text-[#f5e9db] transition-colors text-sm font-medium tracking-widest group"
+          className="flex items-center space-x-1 text-[#9c3d3d] hover:text-[#5d4c3c] transition-colors text-sm font-medium tracking-widest group"
         >
           <ChevronLeft size={18} className="group-hover:-translate-x-1 transition-transform" />
           <span>返回门户</span>
         </button>
         <div className="text-center">
           <p className="text-[#b08d57] text-xs tracking-[0.4em] uppercase font-light">文物故事溯源</p>
-          <h1 className="text-[#f5e9db] text-base sm:text-lg font-black serif tracking-widest">斯诺与红色中国</h1>
+          <h1 className="text-[#5d4c3c] text-base sm:text-lg font-black serif tracking-widest">斯诺与红色中国</h1>
         </div>
         <div className="w-20" />
       </div>
 
       {/* 视频区域 */}
-      <div className="relative w-full bg-black" style={{ maxHeight: '60vh' }}>
+      <div className="relative w-full bg-[#2d241e]" style={{ maxHeight: '60vh' }}>
         <video
           ref={videoRef}
           src="/assets/videos/sino.mp4"
@@ -104,30 +104,30 @@ const Snow: React.FC<SnowProps> = ({ setSection }) => {
           className="absolute inset-0 flex items-center justify-center group"
         >
           <div
-            className={`w-16 h-16 rounded-full bg-black/50 border-2 border-[#b08d57]/80 flex items-center justify-center transition-opacity duration-300 ${playing ? 'opacity-0 group-hover:opacity-100' : 'opacity-100'}`}
+            className={`w-16 h-16 rounded-full bg-black/40 border-2 border-[#b08d57]/80 flex items-center justify-center transition-opacity duration-300 ${playing ? 'opacity-0 group-hover:opacity-100' : 'opacity-100'}`}
           >
             {playing ? (
-              <Pause size={28} className="text-[#f5e9db]" />
+              <Pause size={28} className="text-white" />
             ) : (
-              <Play size={28} className="text-[#f5e9db] ml-1" />
+              <Play size={28} className="text-white ml-1" />
             )}
           </div>
         </button>
         {/* 底部渐变 */}
         <div className="absolute bottom-0 left-0 right-0 h-16 pointer-events-none"
-          style={{ background: 'linear-gradient(to top, #0e0807, transparent)' }} />
+          style={{ background: 'linear-gradient(to top, #f5e9db, transparent)' }} />
       </div>
 
       {/* 页面标题 */}
       <div className="text-center py-12 px-6">
-        <div className="w-12 h-px bg-[#b08d57] mx-auto mb-6 opacity-60" />
-        <h2 className="text-2xl sm:text-3xl font-black serif text-[#f5e9db] tracking-widest mb-3">
+        <div className="w-12 h-px bg-[#9c3d3d] mx-auto mb-6 opacity-60" />
+        <h2 className="text-2xl sm:text-3xl font-black serif text-[#5d4c3c] tracking-widest mb-3">
           斯诺随身六件文物
         </h2>
-        <p className="text-[#b08d57] text-sm tracking-wider max-w-xl mx-auto leading-relaxed">
+        <p className="text-gray-600 text-sm tracking-wider max-w-xl mx-auto leading-relaxed">
           1936年，美国记者埃德加·斯诺秘密进入陕北苏区，随身带去的这六件物品，成为他记录红色中国、向世界揭开真相的历史见证。
         </p>
-        <div className="w-12 h-px bg-[#b08d57] mx-auto mt-6 opacity-60" />
+        <div className="w-12 h-px bg-[#9c3d3d] mx-auto mt-6 opacity-60" />
       </div>
 
       {/* 文物列表 */}
@@ -135,23 +135,23 @@ const Snow: React.FC<SnowProps> = ({ setSection }) => {
         {RELICS.map((relic, index) => (
           <div
             key={relic.id}
-            className="border border-[#b08d57]/20 bg-[#1a0d07]/60 backdrop-blur-sm"
+            className="bg-white shadow-md border-b-4 border-[#9c3d3d]"
           >
             {/* 标题栏 */}
-            <div className="flex items-center space-x-4 px-6 py-4 border-b border-[#b08d57]/20">
+            <div className="flex items-center space-x-4 px-6 py-4 border-b border-[#ebe0d1]">
               <span className="text-2xl">{relic.icon}</span>
               <div>
                 <span className="text-[#b08d57] text-xs tracking-[0.3em] font-light">
                   文物 {String(index + 1).padStart(2, '0')}
                 </span>
-                <h3 className="text-[#f5e9db] text-lg font-bold serif tracking-widest">{relic.title}</h3>
+                <h3 className="text-[#9c3d3d] text-lg font-bold serif tracking-widest">{relic.title}</h3>
               </div>
               <div className="ml-auto w-8 h-px bg-[#b08d57] opacity-40" />
             </div>
             {/* 内容 */}
             <div className="px-6 py-5">
               {relic.content.split('\n\n').map((para, i) => (
-                <p key={i} className="text-[#dfc8a2] text-sm leading-[1.9] mb-3 last:mb-0">
+                <p key={i} className="text-gray-600 text-sm leading-[1.9] mb-3 last:mb-0">
                   {para}
                 </p>
               ))}

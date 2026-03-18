@@ -335,7 +335,7 @@ const Exhibition: React.FC<ExhibitionProps> = ({ setSection }) => {
             {/* 关闭按钮 */}
             <button
               onClick={() => setDrawerOpen(false)}
-              className="absolute top-4 right-4 z-10 w-9 h-9 flex items-center justify-center text-[#b08d57] hover:text-[#f5e9db] border border-[#b08d57]/30 hover:border-[#b08d57] rounded-full transition-all"
+              className="absolute top-4 right-4 z-10 w-9 h-9 flex items-center justify-center bg-black/70 text-white hover:bg-[#9c3d3d] rounded-full transition-all shadow-lg"
             >
               <X size={18} />
             </button>
