@@ -112,7 +112,7 @@ const Layout: React.FC<LayoutProps> = ({ currentSection, setSection, children })
           </div>
         </div>
         <div className="mt-12 pt-8 border-t border-[#5d4c3c] text-center text-xs opacity-50">
-          © 2024 革命文物数字传播平台. 版权所有.
+          © 2026 革命文物数字传播平台. 版权所有.
         </div>
       </footer>
     </div>
