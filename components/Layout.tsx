@@ -98,7 +98,7 @@ const Layout: React.FC<LayoutProps> = ({ currentSection, setSection, children })
           <div className="col-span-1 md:col-span-2">
             <h2 className="text-2xl font-bold mb-4 serif">革命文物数字传播平台</h2>
             <p className="text-sm opacity-70 leading-relaxed max-w-md">
-              致力于通过现代数字化技术，抢救性保护并创新展示延安时期的红色艺术遗产，让革命精神在数字空间永续流传。
+              致力于通过现代数字化技术，抢救性保护并创新展示革命时期的红色文化遗产，让革命精神在数字空间永续流传。
             </p>
           </div>
           <div>

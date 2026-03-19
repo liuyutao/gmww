@@ -32,7 +32,7 @@ const Appreciation: React.FC = () => {
         <header className="mb-16 text-center">
           <h2 className="text-4xl font-bold text-[#9c3d3d] serif mb-4">视觉艺术鉴赏</h2>
           <p className="text-[#5d4c3c] opacity-80 max-w-2xl mx-auto">
-            分类探索延安版画的艺术多样性。每一道木痕都凝结着时代的厚度，每一张拓片都讲述着革命的温情。
+            分类探索红色文物的艺术多样性。每一道木痕都凝结着时代的厚度，每一张拓片都讲述着革命的温情。
           </p>
         </header>
 
@@ -89,9 +89,9 @@ const Appreciation: React.FC = () => {
         <div className="mt-32 bg-white p-12 shadow-2xl rounded-sm border-t-8 border-[#b08d57]">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h3 className="text-3xl font-bold text-[#5d4c3c] mb-6 serif">延安版画：木刻中的工艺灵魂</h3>
+              <h3 className="text-3xl font-bold text-[#5d4c3c] mb-6 serif">革命木刻：木刻中的工艺灵魂</h3>
               <p className="text-gray-600 leading-relaxed mb-8">
-                延安版画多采用“减政”式的黑白木刻，初期深受柯勒惠支等西方艺术家影响，后期吸收了民间剪纸、年画等民族元素，形成了独特的艺术语言。
+                革命木刻多采用“减政”式的黑白木刻，初期深受柯勒惠支等西方艺术家影响，后期吸收了民间剪纸、年画等民族元素，形成了独特的艺术语言。
               </p>
               <div className="space-y-6">
                 {[

@@ -84,7 +84,7 @@ const Exploration: React.FC = () => {
                     <MapPin size={32} />
                 </div>
                 <h3 className="text-xl font-bold mb-2 serif">请在左侧地图选择地标</h3>
-                <p className="text-sm">开启一段尘封的版画艺术之旅</p>
+                <p className="text-sm">开启一段尘封的革命圣地之旅</p>
               </div>
             )}
           </div>
@@ -95,14 +95,14 @@ const Exploration: React.FC = () => {
             <div className="bg-white p-8 border-l-4 border-[#5d4c3c]">
                 <h4 className="text-xl font-bold mb-4 text-[#5d4c3c] serif">数字对比：时代与现状</h4>
                 <p className="text-sm text-gray-600 leading-relaxed">
-                    通过数字化手段对比延安时期的地貌与现状，分析延安精神在空间环境中的艺术映射，帮助用户更深层理解版画作品的“土地基因”。
+                    通过数字化手段对比革命时期的地貌与现状，分析革命精神在空间环境中的艺术映射，帮助用户更深层理解革命文物的”土地基因”。
                 </p>
             </div>
             <div className="bg-[#b08d57] p-8 text-white">
                 <h4 className="text-xl font-bold mb-4 serif">参观礼仪与文化规范</h4>
                 <ul className="text-sm space-y-2 opacity-90">
                     <li>• 保持敬畏：革命旧址是神圣的艺术沃土。</li>
-                    <li>• 静心感受：在数字化展示中倾听版画背后的呐喊。</li>
+                    <li>• 静心感受：在数字化展示中倾听革命文物背后的呐喊。</li>
                     <li>• 知识分享：将探索所得分享给更多红色文化爱好者。</li>
                 </ul>
             </div>

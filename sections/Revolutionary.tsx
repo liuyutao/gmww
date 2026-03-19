@@ -9,7 +9,7 @@ const BANHUA_IMAGES = [
     title: '拥护咱们老百姓自己的军队',
     author: '古元',
     year: '1943年',
-    desc: '以连环画式构图描绘军民鱼水情深，画面朴实生动，是延安木刻民族化的代表之作。',
+    desc: '以连环画式构图描绘军民鱼水情深，画面朴实生动，是木刻民族化的代表之作。',
   },
   {
     url: '/assets/images/banhua2.jpg',
@@ -30,7 +30,7 @@ const BANHUA_IMAGES = [
     title: '鲁迅像',
     author: '力群',
     year: '1936年',
-    desc: '以细腻深沉的刀痕刻画鲁迅先生的面容，神形兼备，寄托了版画艺术家对精神领袖的崇高敬意。',
+    desc: '以细腻深沉的刀痕刻画鲁迅先生的面容，神形兼备，寄托了革命艺术家对精神领袖的崇高敬意。',
   },
 ];
 
@@ -38,13 +38,13 @@ const BANHUA_IMAGES = [
 const VIOLIN_IMAGES = [
   {
    url: '/assets/images/image1.png',
-    title: '延安文艺·弦歌不辍',
+    title: '革命文艺·弦歌不辍',
     desc: '革命岁月中，一把小提琴奏响了信仰的旋律。',
   },
   {
    url: '/assets/images/image2.png',
     title: '文艺战士·小提琴',
-    desc: '乐声穿越战火，承载着延安文艺工作者的革命热情。',
+    desc: '乐声穿越战火，承载着革命文艺工作者的革命热情。',
   },
   {
    url: '/assets/images/image3.png',
@@ -215,17 +215,17 @@ const Revolutionary: React.FC = () => {
             </div>
           </section>
 
-          {/* 让版画动起来 — 视频区 */}
+          {/* 让文物动起来 — 视频区 */}
           <section className="py-20 px-6 bg-[#ebe0d1]">
             <div className="max-w-2xl mx-auto">
               <div className="text-center mb-12">
-                <h2 className="text-3xl font-bold text-[#9c3d3d] serif mb-3">让版画动起来</h2>
+                <h2 className="text-3xl font-bold text-[#9c3d3d] serif mb-3">让文物活起来</h2>
                 <div className="w-16 h-0.5 bg-[#b08d57] mx-auto" />
               </div>
               <div className="flex flex-col gap-10">
                 {[
-                  { src: '/assets/videos/video1.mp4', title: '版画动态影像 · 其一' },
-                  { src: '/assets/videos/video2.mp4', title: '版画动态影像 · 其二' },
+                  { src: '/assets/videos/video1.mp4', title: '革命文物影像 · 其一' },
+                  { src: '/assets/videos/video2.mp4', title: '革命文物影像 · 其二' },
                 ].map((v, i) => (
                   <div key={i}>
                     <div className="relative shadow-xl overflow-hidden bg-black">

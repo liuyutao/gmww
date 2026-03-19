@@ -20,7 +20,7 @@ export const WORKS: WoodcutWork[] = [
     artist: '古元',
     year: '1943',
     category: '社会生活',
-    description: '此画生动记录了当时延安边区农民争取权益的历史瞬间，线条凝练有力，充满了泥土气息。',
+    description: '此画生动记录了当时边区农民争取权益的历史瞬间，线条凝练有力，充满了泥土气息。',
     imageUrl: 'https://picsum.photos/seed/woodcut1/800/600',
   },
   {
@@ -29,7 +29,7 @@ export const WORKS: WoodcutWork[] = [
     artist: '江丰',
     year: '1940',
     category: '历史人物',
-    description: '通过粗犷的木刻线条表现了革命将领的威严与亲民，是延安写实版画的代表作。',
+    description: '通过粗犷的木刻线条表现了革命将领的威严与亲民，是革命写实木刻的代表作。',
     imageUrl: 'https://picsum.photos/seed/woodcut2/800/600',
   },
   {
@@ -47,7 +47,7 @@ export const WORKS: WoodcutWork[] = [
     artist: '古元',
     year: '1943',
     category: '民族精神',
-    description: '展现了边区军民大生产运动中的互助精神，是延安版画从模仿西方走向民族化的里程碑。',
+    description: '展现了边区军民大生产运动中的互助精神，是革命木刻从模仿西方走向民族化的里程碑。',
     imageUrl: 'https://picsum.photos/seed/woodcut4/800/600',
   }
 ];
