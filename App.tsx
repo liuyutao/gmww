@@ -22,7 +22,7 @@ const App: React.FC = () => {
       case 'appreciation':
         return <Appreciation />;
       case 'exploration':
-        return <Exploration />;
+        return <Exploration setSection={setCurrentSection} />;
       case 'heritage':
         return <Heritage setSection={setCurrentSection} />;
       case 'exhibition':

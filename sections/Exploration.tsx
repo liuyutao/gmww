@@ -1,10 +1,22 @@
 
 import React, { useState } from 'react';
 import { SITES } from '../constants';
-import { MapSite } from '../types';
+import { MapSite, Section } from '../types';
 import { MapPin, Info, ArrowRight, Navigation } from 'lucide-react';
 
-const Exploration: React.FC = () => {
+interface ExplorationProps {
+  setSection: (s: Section) => void;
+}
+
+// 数字对比展示图（2×2 布局）
+const COMPARISON_IMAGES = [
+  { url: '/assets/images/image-01/微信图片_20260610234944_298_3201.png', alt: '革命时期地貌对比 1' },
+  { url: '/assets/images/image-01/微信图片_20260610234945_299_3201.png', alt: '革命时期地貌对比 2' },
+  { url: '/assets/images/image-01/微信图片_20260610235016_302_3201.png', alt: '革命时期地貌对比 3' },
+  { url: '/assets/images/image-01/微信图片_20260610235243_310_3201.png', alt: '革命时期地貌对比 4' },
+];
+
+const Exploration: React.FC<ExplorationProps> = ({ setSection }) => {
   const [activeSite, setActiveSite] = useState<MapSite | null>(null);
 
   return (
@@ -74,7 +86,10 @@ const Exploration: React.FC = () => {
                     <p className="text-sm opacity-80 leading-relaxed">{activeSite.history}</p>
                   </div>
                 </div>
-                <button className="w-full flex items-center justify-center space-x-2 py-4 bg-[#f5e9db] text-[#9c3d3d] font-bold tracking-[0.2em] hover:bg-white transition-all transform hover:-translate-y-1">
+                <button
+                  onClick={() => setSection('relics')}
+                  className="w-full flex items-center justify-center space-x-2 py-4 bg-[#f5e9db] text-[#9c3d3d] font-bold tracking-[0.2em] hover:bg-white transition-all transform hover:-translate-y-1"
+                >
                   <span>虚拟参观 360°</span> <ArrowRight size={20} />
                 </button>
               </div>
@@ -90,8 +105,22 @@ const Exploration: React.FC = () => {
           </div>
         </div>
 
+        {/* 数字对比展示图 */}
+        <div className="mt-16 grid grid-cols-2 gap-4">
+          {COMPARISON_IMAGES.map((img) => (
+            <div key={img.url} className="overflow-hidden shadow-md bg-white">
+              <img
+                src={img.url}
+                alt={img.alt}
+                className="w-full h-auto object-cover"
+                style={{ display: 'block' }}
+              />
+            </div>
+          ))}
+        </div>
+
         {/* Legend / Tips Section */}
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="bg-white p-8 border-l-4 border-[#5d4c3c]">
                 <h4 className="text-xl font-bold mb-4 text-[#5d4c3c] serif">数字对比：时代与现状</h4>
                 <p className="text-sm text-gray-600 leading-relaxed">
