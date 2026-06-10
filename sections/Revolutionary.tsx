@@ -195,6 +195,31 @@ const Revolutionary: React.FC = () => {
             </div>
           </section>
 
+          {/* 文艺萌将上方展示图 */}
+          <section className="px-6 pb-4">
+            <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                {[
+                  { url: '/assets/images/image-01/IMG_4822.WEBP', alt: '文艺革命文物展示 1' },
+                  { url: '/assets/images/image-01/IMG_4829.WEBP', alt: '文艺革命文物展示 2' },
+                ].map((img) => (
+                  <div key={img.url} className="relative shadow-lg overflow-hidden group">
+                    <div className="absolute top-3 left-3 w-8 h-8 border-t-2 border-l-2 border-[#b08d57] z-10 pointer-events-none" />
+                    <div className="absolute top-3 right-3 w-8 h-8 border-t-2 border-r-2 border-[#b08d57] z-10 pointer-events-none" />
+                    <div className="absolute bottom-3 left-3 w-8 h-8 border-b-2 border-l-2 border-[#b08d57] z-10 pointer-events-none" />
+                    <div className="absolute bottom-3 right-3 w-8 h-8 border-b-2 border-r-2 border-[#b08d57] z-10 pointer-events-none" />
+                    <img
+                      src={img.url}
+                      alt={img.alt}
+                      className="w-full h-auto object-contain group-hover:scale-[1.02] transition-transform duration-700"
+                      style={{ display: 'block' }}
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
           {/* 萌系文物小伙伴展示区 */}
           <section className="py-20 px-6 bg-[#ebe0d1]">
             <div className="max-w-5xl mx-auto">
