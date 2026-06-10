@@ -23,6 +23,28 @@ const Heritage: React.FC<HeritageProps> = ({ setSection }) => {
       </section>
 
       <div className="max-w-7xl mx-auto px-6 mt-16">
+        {/* 影像展示 — 与下方两栏内容对齐 */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-16">
+          {[
+            { src: '/assets/videos/video3.mp4' },
+            { src: '/assets/videos/video4.mp4' },
+          ].map((v, i) => (
+            <div key={i} className="relative shadow-xl overflow-hidden bg-black">
+              <div className="absolute top-3 left-3 w-8 h-8 border-t-2 border-l-2 border-[#b08d57] z-10 pointer-events-none" />
+              <div className="absolute top-3 right-3 w-8 h-8 border-t-2 border-r-2 border-[#b08d57] z-10 pointer-events-none" />
+              <div className="absolute bottom-3 left-3 w-8 h-8 border-b-2 border-l-2 border-[#b08d57] z-10 pointer-events-none" />
+              <div className="absolute bottom-3 right-3 w-8 h-8 border-b-2 border-r-2 border-[#b08d57] z-10 pointer-events-none" />
+              <video
+                src={v.src}
+                controls
+                playsInline
+                className="w-full aspect-video object-cover"
+                style={{ display: 'block' }}
+              />
+            </div>
+          ))}
+        </div>
+
         {/* Core Methodology Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-24">
             {/* Traditional Method */}
