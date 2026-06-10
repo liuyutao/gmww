@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { ExternalLink, Search } from 'lucide-react';
+import { ExternalLink, Search, Send, X } from 'lucide-react';
 
 interface RelicCategory {
   title: string;
@@ -96,9 +96,17 @@ const RELIC_CATEGORIES: RelicCategory[] = [
 const FILTER_TABS = ['全部', '革命信物', '重大见证', '生活用具', '武器装备', '时代印记', '战地装备'] as const;
 type FilterTab = typeof FILTER_TABS[number];
 
+// 底部展示图
+const BOTTOM_IMAGES = [
+  { url: '/assets/images/images-06/微信图片_2026-06-10_212146_614.png', alt: '文物展示 1' },
+  { url: '/assets/images/images-06/微信图片_2026-06-10_212129_960.png', alt: '文物展示 2' },
+];
+const THANK_GIRL_IMAGE = '/assets/images/images-06/微信图片_2026-06-10_212138_286.png';
+
 const Relics: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [activeFilter, setActiveFilter] = useState<FilterTab>('全部');
+  const [showThankModal, setShowThankModal] = useState(false);
 
   const handleRelicClick = (name: string) => {
     const url = `https://image.baidu.com/search/index?tn=baiduimage&word=${encodeURIComponent(name)}`;
@@ -249,10 +257,68 @@ const Relics: React.FC = () => {
         </div>
       </section>
 
+      {/* 底部展示图 */}
+      <section className="pb-8 px-4 sm:px-6 lg:px-10">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+          {BOTTOM_IMAGES.map((img) => (
+            <div key={img.url} className="relative overflow-hidden rounded-2xl shadow-lg border border-[#e8d9c5] bg-white">
+              <img
+                src={img.url}
+                alt={img.alt}
+                className="w-full h-auto object-cover"
+                style={{ display: 'block' }}
+              />
+              <button
+                onClick={() => setShowThankModal(true)}
+                className="absolute bottom-4 right-4 flex items-center gap-1.5 px-4 py-2 bg-[#9c3d3d] text-white text-sm font-bold rounded-full shadow-lg hover:bg-[#7a2e2e] transition-all duration-200 hover:scale-105 active:scale-95"
+                aria-label="发送"
+              >
+                <Send size={16} />
+                <span>发送</span>
+              </button>
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* Bottom note */}
       <div className="pb-16 text-center text-xs text-[#9a8878] opacity-60 tracking-wider px-4">
         点击任意文物名称将在新标签页打开百度图片搜索
       </div>
+
+      {/* 感谢弹窗 */}
+      {showThankModal && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm animate-in fade-in duration-300"
+          onClick={(e) => e.target === e.currentTarget && setShowThankModal(false)}
+        >
+          <div className="relative bg-white rounded-2xl shadow-2xl overflow-hidden max-w-sm w-full animate-in zoom-in-95 duration-300">
+            <button
+              onClick={() => setShowThankModal(false)}
+              className="absolute top-3 right-3 z-10 w-8 h-8 bg-[#9c3d3d]/10 hover:bg-[#9c3d3d]/20 rounded-full flex items-center justify-center transition-colors"
+              aria-label="关闭"
+            >
+              <X size={16} className="text-[#9c3d3d]" />
+            </button>
+            <div className="bg-[#fff9f0] p-6 pb-4">
+              <img
+                src={THANK_GIRL_IMAGE}
+                alt="小女孩"
+                className="w-full object-contain max-h-[50vh] rounded-xl"
+              />
+            </div>
+            <div className="px-6 py-5 text-center bg-white">
+              <p className="text-[#5d4c3c] text-lg font-bold serif mb-4">谢谢你</p>
+              <button
+                onClick={() => setShowThankModal(false)}
+                className="w-full bg-gradient-to-r from-[#9c3d3d] to-[#b05050] text-white py-3 px-8 font-bold tracking-widest rounded-full hover:shadow-lg transition-all duration-300 hover:scale-[1.02] active:scale-95"
+              >
+                关闭
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
