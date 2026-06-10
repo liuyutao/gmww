@@ -84,6 +84,12 @@ const POPUP_IMAGE_URL = '/assets/images/popup.jpg';
 // 顶部 Banner 背景图
 const HERO_BANNER_URL = '/assets/images/images-06/微信图片_2026-06-10_212200_064.jpg';
 
+// 乐器 Tab 顶部 IP 展示图（左右各一张）
+const YUQI_TOP_IMAGES = [
+  { url: '/assets/images/images-06/image2.png', alt: '红小石&红小果 IP 设计' },
+  { url: '/assets/images/images-06/微信图片_20260610212039.png', alt: '星火乐队 IP 设计' },
+];
+
 const Revolutionary: React.FC = () => {
   const [showModal, setShowModal] = useState(false);
   const [activeTab, setActiveTab] = useState<'yuqi' | 'banhua'>('yuqi');
@@ -154,6 +160,21 @@ const Revolutionary: React.FC = () => {
       {activeTab === 'yuqi' && (
         <>
           <section className="py-16 px-6">
+            {/* IP 展示图：左右各一张，总宽度与 Banner 背景图一致 */}
+            <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                {YUQI_TOP_IMAGES.map((img) => (
+                  <div key={img.url} className="overflow-hidden shadow-md">
+                    <img
+                      src={img.url}
+                      alt={img.alt}
+                      className="w-full h-auto object-contain"
+                      style={{ display: 'block' }}
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
             <div className="max-w-2xl mx-auto">
               <div className="flex flex-col gap-10">
                 {VIOLIN_IMAGES.map((img, i) => (
