@@ -81,6 +81,9 @@ const CUTE_RELICS = [
 // 弹窗图片 - 替换为实际图片URL即可
 const POPUP_IMAGE_URL = '/assets/images/popup.jpg';
 
+// 顶部 Banner 背景图
+const HERO_BANNER_URL = '/assets/images/images-06/微信图片_2026-06-10_212200_064.jpg';
+
 const Revolutionary: React.FC = () => {
   const [showModal, setShowModal] = useState(false);
   const [activeTab, setActiveTab] = useState<'yuqi' | 'banhua'>('yuqi');
@@ -89,16 +92,37 @@ const Revolutionary: React.FC = () => {
     <div className="animate-in fade-in duration-700 bg-[#f5e9db] min-h-screen">
       {/* Hero */}
       <section className="relative py-20 px-6 text-center overflow-hidden bg-gradient-to-b from-[#9c3d3d] to-[#7a2e2e]">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-0 left-0 w-full h-full"
-            style={{ backgroundImage: 'repeating-linear-gradient(45deg, #f5e9db 0, #f5e9db 1px, transparent 0, transparent 50%)', backgroundSize: '20px 20px' }}
-          ></div>
+        {/* 斜纹装饰，置于背景图下方，不遮挡图片 */}
+        <div className="absolute inset-0 opacity-10 z-0 pointer-events-none">
+          <div
+            className="absolute top-0 left-0 w-full h-full"
+            style={{
+              backgroundImage:
+                'repeating-linear-gradient(45deg, #f5e9db 0, #f5e9db 1px, transparent 0, transparent 50%)',
+              backgroundSize: '20px 20px',
+            }}
+          />
+        </div>
+        {/* 背景图与 Banner 同高，宽度与导航内容区一致 */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none z-[1]">
+          <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
+            <img
+              src={HERO_BANNER_URL}
+              alt=""
+              aria-hidden="true"
+              className="w-full h-full object-cover object-[center_10%]"
+            />
+          </div>
         </div>
         <div className="relative z-10 max-w-3xl mx-auto">
-          <p className="text-[#f5e9db] text-sm tracking-[0.5em] mb-4 opacity-70">REVOLUTIONARY CULTURAL RELICS</p>
-          <h1 className="text-5xl md:text-6xl font-black text-[#f5e9db] serif mb-6 drop-shadow-lg">革命文物</h1>
-          <div className="w-24 h-1 bg-[#b08d57] mx-auto mb-6"></div>
-          <p className="text-red-100 text-lg leading-relaxed opacity-80">
+          <p className="text-[#d4b896] text-sm tracking-[0.5em] mb-4 drop-shadow-[0_1px_3px_rgba(0,0,0,0.45)]">
+            REVOLUTIONARY CULTURAL RELICS
+          </p>
+          <h1 className="text-5xl md:text-6xl font-black text-[#e8c882] serif mb-6 drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)]">
+            革命文物
+          </h1>
+          <div className="w-24 h-1 bg-[#f5e9db] mx-auto mb-6"></div>
+          <p className="text-[#2d241e] text-lg leading-relaxed drop-shadow-[0_1px_2px_rgba(245,233,219,0.6)]">
             刀光剑影中，也有悠扬弦音；硝烟弥漫里，亦有动人乐章。
             <br />这些珍贵的文艺文物，记录着革命年代的激情与浪漫。
           </p>
