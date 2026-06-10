@@ -12,6 +12,7 @@ const RELICS = [
     id: 1,
     title: '笔记本',
     icon: '📓',
+    video: '/assets/videos/relics/relic-1.mp4',
     content:
       '斯诺在陕北期间，用笔记本详细记录了与毛泽东、周恩来等中共领导人的谈话内容，以及红军战士的口述、苏区的社会风貌、经济状况、军事部署等，这些笔记是《红星照耀中国》的原始创作底稿，真实还原了 1936 年陕北苏区的全貌，其中毛泽东向其口述的个人经历，是毛泽东首次向西方记者完整讲述自己的革命历程，具有极高的史料价值。',
   },
@@ -19,6 +20,7 @@ const RELICS = [
     id: 2,
     title: '莱卡相机',
     icon: '📷',
+    video: '/assets/videos/relics/relic-2.mp4',
     content:
       '这是斯诺当时随身携带的便携相机，他用这台相机拍摄了大量陕北苏区的珍贵照片，包括毛泽东戴八角帽的经典肖像、红军战士训练、苏区群众生产生活、中共领导人的工作场景等，这些照片是最早向西方公开的红色中国影像资料，打破了国民党对红军的"妖魔化"宣传，让世界看到了红军真实、鲜活的面貌。',
   },
@@ -26,6 +28,7 @@ const RELICS = [
     id: 3,
     title: '钢笔',
     icon: '🖊️',
+    video: '/assets/videos/relics/relic-3.mp4',
     content:
       '作为斯诺的书写工具，见证了他与中共领导人的彻夜长谈，也见证了他对苏区真相的文字记录，是其"客观记录、真诚报道"斯诺精神的物质载体。',
   },
@@ -33,6 +36,7 @@ const RELICS = [
     id: 4,
     title: '《七律·长征》',
     icon: '📜',
+    video: '/assets/videos/relics/relic-4.mp4',
     content:
       '是毛泽东创作的经典革命诗词，其抄赠斯诺的手稿为珍贵革命文物，现相关手稿影印件陈列于延安革命纪念馆、中国国家博物馆，原件为国家一级文物。\n\n1936 年 10 月，红军三大主力胜利会师，长征取得圆满成功，毛泽东在陕北保安创作了《七律·长征》。斯诺在与毛泽东的交流中，听闻了红军长征的壮烈历程，深受震撼，毛泽东遂将这首诗抄赠给斯诺，这是《七律·长征》首次向外界公开。斯诺将这首诗带出陕北，收录于《红星照耀中国》中，让这首歌颂红军革命英雄主义的诗词首次走向世界，成为世界了解红军长征精神的重要文学载体，也让长征的故事通过文字传遍全球。',
   },
@@ -40,6 +44,7 @@ const RELICS = [
     id: 5,
     title: '苏区纸币',
     icon: '💴',
+    video: '/assets/videos/relics/relic-5.mp4',
     content:
       '苏区纸币是中华苏维埃共和国的法定货币，为重要的革命金融文物，按发行地区可分为中央苏区纸币、陕北苏区纸币等，现均为国家文物，收藏于各地革命纪念馆、钱币博物馆。\n\n陕北苏区建立后，为打破国民党的经济封锁，保障苏区军民的生产生活，苏维埃政府发行了苏区纸币，统一苏区的金融市场，促进苏区的经济发展。苏区纸币以粮食、布匹等实物为储备，具有稳定的购买力，是苏区政权独立运行、自主发展经济的重要体现，也反映了红军"保障民生、发展生产"的革命理念。',
   },
@@ -47,6 +52,7 @@ const RELICS = [
     id: 6,
     title: '毛泽东的八角帽',
     icon: '🎖️',
+    video: '/assets/videos/relics/relic-6.mp4',
     content:
       '毛泽东在陕北期间佩戴的八角帽为国家一级革命文物，现收藏于延安革命纪念馆，是毛泽东在苏区时期的经典标志性物品，也是红色中国的重要象征文物。\n\n这顶八角帽是陕北苏区红军的制式军帽，毛泽东在陕北期间日常佩戴，斯诺为其拍摄的戴八角帽的肖像，成为毛泽东最经典的形象之一。',
   },
@@ -130,31 +136,50 @@ const Snow: React.FC<SnowProps> = ({ setSection }) => {
         <div className="w-12 h-px bg-[#9c3d3d] mx-auto mt-6 opacity-60" />
       </div>
 
-      {/* 文物列表 */}
-      <div className="max-w-3xl mx-auto px-6 pb-20 space-y-8">
+      {/* 文物列表：左侧窄卡片 + 右侧小视频 */}
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 pb-20 space-y-6">
         {RELICS.map((relic, index) => (
           <div
             key={relic.id}
-            className="bg-white shadow-md border-b-4 border-[#9c3d3d]"
+            className="flex flex-col md:flex-row md:items-stretch gap-4 md:gap-5"
           >
-            {/* 标题栏 */}
-            <div className="flex items-center space-x-4 px-6 py-4 border-b border-[#ebe0d1]">
-              <span className="text-2xl">{relic.icon}</span>
-              <div>
-                <span className="text-[#b08d57] text-xs tracking-[0.3em] font-light">
-                  文物 {String(index + 1).padStart(2, '0')}
-                </span>
-                <h3 className="text-[#9c3d3d] text-lg font-bold serif tracking-widest">{relic.title}</h3>
+            {/* 左侧文字卡片（收窄） */}
+            <div className="md:w-[58%] lg:w-[55%] bg-white shadow-md border-b-4 border-[#9c3d3d] shrink-0">
+              <div className="flex items-center space-x-3 px-4 sm:px-5 py-3 border-b border-[#ebe0d1]">
+                <span className="text-xl sm:text-2xl">{relic.icon}</span>
+                <div>
+                  <span className="text-[#b08d57] text-[10px] sm:text-xs tracking-[0.3em] font-light">
+                    文物 {String(index + 1).padStart(2, '0')}
+                  </span>
+                  <h3 className="text-[#9c3d3d] text-base sm:text-lg font-bold serif tracking-widest">{relic.title}</h3>
+                </div>
+                <div className="ml-auto w-6 h-px bg-[#b08d57] opacity-40" />
               </div>
-              <div className="ml-auto w-8 h-px bg-[#b08d57] opacity-40" />
+              <div className="px-4 sm:px-5 py-4">
+                {relic.content.split('\n\n').map((para, i) => (
+                  <p key={i} className="text-gray-600 text-xs sm:text-sm leading-[1.85] mb-2.5 last:mb-0">
+                    {para}
+                  </p>
+                ))}
+              </div>
             </div>
-            {/* 内容 */}
-            <div className="px-6 py-5">
-              {relic.content.split('\n\n').map((para, i) => (
-                <p key={i} className="text-gray-600 text-sm leading-[1.9] mb-3 last:mb-0">
-                  {para}
-                </p>
-              ))}
+
+            {/* 右侧小视频 */}
+            <div className="md:flex-1 md:max-w-[42%] lg:max-w-[40%] flex flex-col">
+              <div className="relative flex-1 min-h-[180px] sm:min-h-[200px] shadow-lg overflow-hidden bg-[#2d241e] border border-[#b08d57]/30">
+                <div className="absolute top-2 left-2 w-5 h-5 border-t-2 border-l-2 border-[#b08d57] z-10 pointer-events-none" />
+                <div className="absolute top-2 right-2 w-5 h-5 border-t-2 border-r-2 border-[#b08d57] z-10 pointer-events-none" />
+                <div className="absolute bottom-2 left-2 w-5 h-5 border-b-2 border-l-2 border-[#b08d57] z-10 pointer-events-none" />
+                <div className="absolute bottom-2 right-2 w-5 h-5 border-b-2 border-r-2 border-[#b08d57] z-10 pointer-events-none" />
+                <video
+                  src={relic.video}
+                  controls
+                  playsInline
+                  preload="metadata"
+                  className="w-full h-full object-cover"
+                  style={{ display: 'block' }}
+                />
+              </div>
             </div>
           </div>
         ))}

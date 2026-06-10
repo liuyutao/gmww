@@ -38,9 +38,12 @@ const App: React.FC = () => {
     }
   };
 
-  // 展馆页面全屏沉浸式，不需要导航栏和 footer
+  // 全屏沉浸式页面，不需要导航栏和 footer
   if (currentSection === 'exhibition') {
     return <Exhibition setSection={setCurrentSection} />;
+  }
+  if (currentSection === 'snow') {
+    return <Snow setSection={setCurrentSection} />;
   }
 
   return (

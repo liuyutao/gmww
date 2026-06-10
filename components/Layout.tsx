@@ -14,6 +14,7 @@ const Layout: React.FC<LayoutProps> = ({ currentSection, setSection, children })
 
   const navItems = [
     { id: 'home', label: '首页' },
+    { id: 'snow', label: '文物故事溯源' },
     { id: 'exhibition', label: '沉浸观展' },
     { id: 'exploration', label: '历史探秘' },
     { id: 'heritage', label: '文化传承' },
@@ -104,6 +105,12 @@ const Layout: React.FC<LayoutProps> = ({ currentSection, setSection, children })
           <div>
             <h3 className="text-lg font-bold mb-4 border-b border-[#5d4c3c] pb-2">快速链接</h3>
             <ul className="space-y-2 text-sm opacity-80">
+              <li
+                className="hover:text-[#b08d57] cursor-pointer"
+                onClick={() => setSection('snow')}
+              >
+                文物故事溯源
+              </li>
               <li className="hover:text-[#b08d57] cursor-pointer">关于我们</li>
               <li className="hover:text-[#b08d57] cursor-pointer">艺术研究</li>
               <li className="hover:text-[#b08d57] cursor-pointer">教育资源</li>

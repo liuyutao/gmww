@@ -14,6 +14,12 @@ const CORE_VALUES = [
   { icon: GraduationCap, title: '文化根脉', desc: '融合民族审美与革命内涵，成为当代红色文化传承的重要基石。' },
 ];
 
+const CARD_BACKGROUNDS: { url: string; position?: string }[] = [
+  { url: '/assets/images/images-06/微信图片_2026-06-10_212207_340.png' },
+  { url: '/assets/images/images-06/微信图片_2026-06-10_212200_064.jpg' },
+  { url: '/assets/images/images-06/微信图片_20260610211240_270_3201.png', position: 'center center' },
+];
+
 const Home: React.FC<HomeProps> = ({ setSection }) => {
   return (
     <div className="animate-in fade-in duration-700">
@@ -32,7 +38,13 @@ const Home: React.FC<HomeProps> = ({ setSection }) => {
           <p className="text-red-50 px-8 text-lg md:text-xl font-light mb-12 leading-relaxed opacity-80">
             汇集全国革命文物资源，让文物“活”起来。
           </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-6">
+          <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-4 sm:gap-6">
+            <button
+              onClick={() => setSection('snow')}
+              className="bg-[#b08d57] text-[#f5e9db] px-10 py-4 font-bold tracking-widest hover:bg-[#c9a56a] transition-all transform hover:-translate-y-1 shadow-xl"
+            >
+              文物故事溯源
+            </button>
             <button
               onClick={() => setSection('exhibition')}
               className="bg-[#f5e9db] text-[#9c3d3d] px-10 py-4 font-bold tracking-widest hover:bg-white transition-all transform hover:-translate-y-1 shadow-xl"
@@ -64,13 +76,45 @@ const Home: React.FC<HomeProps> = ({ setSection }) => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             {CORE_VALUES.map((v, i) => {
               const Icon = v.icon;
+              const bgImage = CARD_BACKGROUNDS[i];
               return (
-                <div key={i} className="bg-white p-8 border-b-4 border-[#9c3d3d] hover:shadow-2xl transition-all group">
-                  <div className="mb-6 transform group-hover:scale-110 transition-transform">
-                    <Icon className="text-[#9c3d3d]" size={40} />
+                <div
+                  key={i}
+                  className={`p-8 border-b-4 border-[#9c3d3d] hover:shadow-2xl transition-all group ${
+                    bgImage ? 'relative overflow-hidden' : 'bg-white'
+                  }`}
+                >
+                  {bgImage && (
+                    <>
+                      <div
+                        className="absolute inset-0 bg-cover bg-no-repeat"
+                        style={{
+                          backgroundImage: `url(${bgImage.url})`,
+                          backgroundPosition: bgImage.position ?? 'center',
+                        }}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/75 to-transparent" />
+                    </>
+                  )}
+                  <div className={`relative z-10 ${bgImage ? 'max-w-[88%]' : ''}`}>
+                    {bgImage ? (
+                      <div className="bg-white/10 backdrop-blur-[2px] px-5 py-4 rounded-sm shadow-sm">
+                        <div className="mb-6 transform group-hover:scale-110 transition-transform">
+                          <Icon className="text-[#9c3d3d]" size={40} />
+                        </div>
+                        <h3 className="text-xl font-bold mb-4 text-[#2d241e]">{v.title}</h3>
+                        <p className="text-[#4a3f35] leading-relaxed">{v.desc}</p>
+                      </div>
+                    ) : (
+                      <>
+                        <div className="mb-6 transform group-hover:scale-110 transition-transform">
+                          <Icon className="text-[#9c3d3d]" size={40} />
+                        </div>
+                        <h3 className="text-xl font-bold mb-4 text-[#2d241e]">{v.title}</h3>
+                        <p className="text-gray-600 leading-relaxed">{v.desc}</p>
+                      </>
+                    )}
                   </div>
-                  <h3 className="text-xl font-bold mb-4 text-[#2d241e]">{v.title}</h3>
-                  <p className="text-gray-600 leading-relaxed">{v.desc}</p>
                 </div>
               );
             })}
